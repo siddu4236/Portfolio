@@ -1,5 +1,5 @@
 import React from "react";
-import "./projects.css";
+import styled from "styled-components";
 import skywatchImg from "../assets/sky1.png";
 import portfolioImg from "../assets/prot1.png";
 import tictactoeImg from "../assets/tic1.png";
@@ -48,52 +48,164 @@ const projects = [
   },
 ];
 
+const ProjectSlide = styled.div`
+  width: 1100px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+`;
+
+const Head = styled.div`
+  font-size: 60px;
+  text-align: center;
+  font-weight: 600;
+  margin: 20px auto 0;
+  color: #f2f3f4;
+`;
+
+const PHeadDes = styled.div`
+  font-size: 25px;
+  text-align: center;
+  color: #b1b2b3;
+  margin: 0 auto 50px;
+`;
+
+const ProjectsShowCase = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+`;
+
+const ProjectCard = styled.div`
+  width: 290px;
+  background-color: #1e1e1e;
+  padding: 25px;
+  border-radius: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1.5);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(74, 152, 255, 0.6), 0 0 40px rgba(0, 0, 0, 1.8);
+  }
+`;
+
+const ProjectImage = styled.img`
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  filter: ${(props) => (props.comingSoon ? "grayscale(100%)" : "none")};
+  opacity: ${(props) => (props.comingSoon ? "0.8" : "1")};
+  height: ${(props) => (props.comingSoon ? "200px" : "auto")};
+`;
+
+const SkillTags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 10px;
+`;
+
+const SkillPill = styled.span`
+  font-size: 12px;
+  font-weight: 400;
+  color: rgb(74, 152, 255);
+  background-color: rgba(133, 76, 230, 0.082);
+  padding: 2px 8px;
+  border-radius: 10px;
+`;
+
+const Title = styled.div`
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(177, 178, 179);
+`;
+
+const Description = styled.p`
+  font-weight: 400;
+  color: rgba(177, 178, 179, 0.6);
+  overflow: hidden;
+  margin-top: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+`;
+
+const ViewButton = styled.a`
+  width: 100%;
+  padding: 10px 0;
+  background-color: #fff;
+  color: #000;
+  font-size: 14px;
+  font-weight: 1000;
+  font-family: sans-serif;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  text-align: center;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #eaeaea;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background-color: #444;
+    color: #ccc;
+    pointer-events: none;
+  }
+`;
+
 const Projects = () => {
   return (
-    <div className="ProjectSlide">
-      <div className="head">Projects</div>
-      <div className="phead-des">
-        Here are some of my projects I've built recently:
-      </div>
-      <div className="projects-showCase">
+    <ProjectSlide>
+      <Head>Projects</Head>
+      <PHeadDes>Here are some of my projects I've built recently:</PHeadDes>
+      <ProjectsShowCase>
         {projects.map((project, index) => (
-          <div key={index} className="project-card">
-            <img
+          <ProjectCard key={index}>
+            <ProjectImage
               src={project.img}
               alt={project.title}
-              className={`project-img ${
-                project.title === "Coming Soon" ? "coming-soon-img" : ""
-              }`}
+              comingSoon={project.title === "Coming Soon"}
             />
-
-            <div className="skill-tags">
+            <SkillTags>
               {project.skills.map((skill, idx) => (
-                <span key={idx} className="skill-pill">
-                  {skill}
-                </span>
+                <SkillPill key={idx}>{skill}</SkillPill>
               ))}
-            </div>
-
-            <div className="ptitle">{project.title}</div>
-
-            <p className="card-desc">{project.description}</p>
-
+            </SkillTags>
+            <Title>{project.title}</Title>
+            <Description>{project.description}</Description>
             {project.link !== "#" ? (
-              <a
+              <ViewButton
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="view-btn"
               >
                 View Project
-              </a>
+              </ViewButton>
             ) : (
-              <div className="view-btn disabled">Coming Soon</div>
+              <ViewButton as="div" className="disabled">
+                Coming Soon
+              </ViewButton>
             )}
-          </div>
+          </ProjectCard>
         ))}
-      </div>
-    </div>
+      </ProjectsShowCase>
+    </ProjectSlide>
   );
 };
 
