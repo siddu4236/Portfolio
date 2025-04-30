@@ -122,6 +122,9 @@ const Header = () => {
               <Link href="#certifications">Certifications</Link>
             </li>
             <li>
+              <Link href="#Education">Education</Link>
+            </li>
+            <li>
               <Link href="#contact">Contact</Link>
             </li>
           </Links>
