@@ -1,8 +1,65 @@
 import React from "react";
-import "./skills.css";
-import ps from "../assets/ps.png"
-import gth from "../assets/github1.png"
-// Updated skills array with local Photoshop image path
+import styled from "styled-components";
+import ps from "../assets/ps.png";
+import gth from "../assets/github1.png";
+
+// Styled Components
+const SkillSlide = styled.div`
+  width: 1100px;
+  margin: 0 auto;
+  height: 625px;
+`;
+
+const Head = styled.div`
+  font-size: 60px;
+  text-align: center;
+  font-weight: 600;
+  margin-top: 20px;
+  color: rgb(242, 243, 244);
+`;
+
+const Description = styled.p`
+  font-size: 25px;
+  text-align: center;
+  color: rgb(177, 178, 179);
+  margin: 20px auto 50px auto;
+`;
+
+const SkillsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+`;
+
+const SkillBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1c1c28;
+  color: #d1d1d1;
+  border: 2px solid #888;
+  border-radius: 20px;
+  padding: 15px;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  text-align: center;
+
+  &:hover {
+    transform: scale(1.05);
+    border-color: #4a98ff;
+  }
+`;
+
+const SkillLogo = styled.img`
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+`;
+
+// Skill Data
 const skills = [
   { name: "C", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" },
   { name: "C++", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
@@ -25,18 +82,18 @@ const skills = [
 
 const Skills = () => {
   return (
-    <div className="skillSlide">
-      <div className="head">Skills</div>
-      <p>Here are some of my skills on which I have been working on for the past 4 years.</p>
-      <div className="skills-grid">
+    <SkillSlide>
+      <Head>Skills</Head>
+      <Description>Here are some of my skills on which I have been working on for the past 4 years.</Description>
+      <SkillsGrid>
         {skills.map((skill, i) => (
-          <div key={i} className="skill-box">
-            <img src={skill.logo} alt={skill.name} className="skill-logo" />
+          <SkillBox key={i}>
+            <SkillLogo src={skill.logo} alt={skill.name} />
             <span>{skill.name}</span>
-          </div>
+          </SkillBox>
         ))}
-      </div>
-    </div>
+      </SkillsGrid>
+    </SkillSlide>
   );
 };
 

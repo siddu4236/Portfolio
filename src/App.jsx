@@ -5,6 +5,7 @@ import './App.css'
 import Header from './components/header.jsx'
 import Hero from './components/Hero.jsx'
 import Skills from './components/Skills.jsx'
+import Projects from './components/Projects.jsx'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
      <Header/>
      <div className="HEROO"><Hero/></div>
      <Skills/>
+     <Projects/>
     </>
   )
 }

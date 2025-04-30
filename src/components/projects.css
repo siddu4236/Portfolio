@@ -1,0 +1,71 @@
+.ProjectSlide {
+    width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 625px;
+}
+
+.head {
+    font-size: 60px;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 20px;
+    color: rgb(242, 243, 244);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    font-size: 25px;
+    text-align: center;
+    color: rgb(177, 178, 179);
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+.project-card {
+    background-color: #1e1e1e;
+    padding: 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: white;
+}
+
+.project-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.card-desc {
+    font-size: 18px;
+    color: rgb(180, 180, 180);
+    margin: 0.5rem 0 1rem;
+}
+
+.view-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.view-btn:hover {
+    background-color: #eaeaea;
+}
